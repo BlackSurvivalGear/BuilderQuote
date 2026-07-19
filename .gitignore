@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Testing & Verification
+screenshot_*.png
+verify.cjs
+preview.log
