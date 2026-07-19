@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Container } from '../components/SectionTitle';
 
 export const Footer: React.FC = () => {
+  const [logoError, setLogoError] = useState(false);
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
@@ -38,11 +39,18 @@ export const Footer: React.FC = () => {
           {/* Column 1: Logo & Mission Statement */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
             <Link to="/" className="flex items-center gap-3 mb-5 group">
-              <img
-                src="assets/logo.png"
-                alt="BuilderQuoteAI Logo"
-                className="h-10 w-10 object-contain brightness-100 transition-transform duration-300 group-hover:scale-105"
-              />
+              {!logoError ? (
+                <img
+                  src={`${import.meta.env.BASE_URL}assets/logo.png`}
+                  alt="BuilderQuoteAI Logo"
+                  onError={() => setLogoError(true)}
+                  className="h-10 w-10 object-contain brightness-100 transition-transform duration-300 group-hover:scale-105"
+                />
+              ) : (
+                <div className="h-10 w-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary font-black text-xs font-mono">
+                  BQ
+                </div>
+              )}
               <span className="text-xl font-extrabold text-white tracking-tight">
                 BuilderQuote<span className="text-accent">AI</span>
               </span>

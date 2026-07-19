@@ -8,6 +8,7 @@ import { Container } from '../components/SectionTitle';
 
 export const Register: React.FC = () => {
   const navigate = useNavigate();
+  const [logoError, setLogoError] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     companyName: '',
@@ -102,11 +103,18 @@ export const Register: React.FC = () => {
           <Card glass hoverable={false} className="p-8 border-borderDark/80">
             {/* Logo display */}
             <div className="flex flex-col items-center mb-6">
-              <img
-                src="assets/logo.png"
-                alt="BuilderQuoteAI Logo"
-                className="h-14 w-14 object-contain brightness-100 mb-3"
-              />
+              {!logoError ? (
+                <img
+                  src={`${import.meta.env.BASE_URL}assets/logo.png`}
+                  alt="BuilderQuoteAI Logo"
+                  onError={() => setLogoError(true)}
+                  className="h-14 w-14 object-contain brightness-100 mb-3"
+                />
+              ) : (
+                <div className="h-14 w-14 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary font-black text-sm font-mono mb-3">
+                  BQ
+                </div>
+              )}
               <h2 className="text-2xl sm:text-3xl font-black text-white text-center">Get Started Free</h2>
               <p className="text-xs sm:text-sm text-textSecondary text-center mt-1">14-day free trial, no credit card required</p>
             </div>

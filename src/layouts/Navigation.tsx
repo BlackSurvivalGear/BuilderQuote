@@ -7,6 +7,7 @@ import { Container } from '../components/SectionTitle';
 export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -48,11 +49,18 @@ export const Navigation: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo Section */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img
-              src="assets/logo.png"
-              alt="BuilderQuoteAI Logo"
-              className="h-10 w-10 sm:h-11 sm:w-11 object-contain brightness-100 transition-transform duration-300 group-hover:scale-105"
-            />
+            {!logoError ? (
+              <img
+                src={`${import.meta.env.BASE_URL}assets/logo.png`}
+                alt="BuilderQuoteAI Logo"
+                onError={() => setLogoError(true)}
+                className="h-10 w-10 sm:h-11 sm:w-11 object-contain brightness-100 transition-transform duration-300 group-hover:scale-105"
+              />
+            ) : (
+              <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary font-black text-xs font-mono">
+                BQ
+              </div>
+            )}
             <span className="text-lg sm:text-xl font-extrabold text-white tracking-tight group-hover:text-primary transition-colors">
               BuilderQuote<span className="text-accent">AI</span>
             </span>
