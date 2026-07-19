@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-5 flex flex-col items-start text-left">
             <Link to="/" className="flex items-center gap-3 mb-5 group">
               <img
-                src="/assets/logo.png"
+                src="assets/logo.png"
                 alt="BuilderQuoteAI Logo"
                 className="h-10 w-10 object-contain brightness-100 transition-transform duration-300 group-hover:scale-105"
               />

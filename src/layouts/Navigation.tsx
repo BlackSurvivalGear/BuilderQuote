@@ -49,7 +49,7 @@ export const Navigation: React.FC = () => {
           {/* Logo Section */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/assets/logo.png"
+              src="assets/logo.png"
               alt="BuilderQuoteAI Logo"
               className="h-10 w-10 sm:h-11 sm:w-11 object-contain brightness-100 transition-transform duration-300 group-hover:scale-105"
             />

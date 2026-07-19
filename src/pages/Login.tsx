@@ -87,7 +87,7 @@ export const Login: React.FC = () => {
             {/* Logo display */}
             <div className="flex flex-col items-center mb-8">
               <img
-                src="/assets/logo.png"
+                src="assets/logo.png"
                 alt="BuilderQuoteAI Logo"
                 className="h-14 w-14 object-contain brightness-100 mb-3"
               />
